@@ -27,7 +27,21 @@ jobs:
           mv MoreWaita MacWaita
           rm -rf MacWaita/.git
           sed -i 's/Name=MoreWaita/Name=MacWaita/g' MacWaita/index.theme
-          cp -af MacTahoe-icon-theme/src/apps/scalable/* MacWaita/scalable/apps/
+          
+          # Copy MacTahoe source files and symlinks over MoreWaita.
+          # The '-f' flag forces overwrite if the file already exists, 
+          # but leaves untouched MoreWaita icons exactly where they are.
+          for size in 16 22 32 scalable symbolic; do
+            if [ -d "MacTahoe-icon-theme/src/apps/$size" ]; then
+              mkdir -p MacWaita/$size/apps
+              cp -af MacTahoe-icon-theme/src/apps/$size/* MacWaita/$size/apps/
+            fi
+            
+            if [ -d "MacTahoe-icon-theme/links/apps/$size" ]; then
+              mkdir -p MacWaita/$size/apps
+              cp -af MacTahoe-icon-theme/links/apps/$size/* MacWaita/$size/apps/
+            fi
+          done
 
       - name: Zip the Theme
         run: zip -r MacWaita-${{ env.VERSION }}.zip MacWaita/
