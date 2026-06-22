@@ -16,7 +16,7 @@ An automated hybrid GNOME icon theme. It combines the system-level integration o
 
 ## Build Process
 
-This theme is not manually maintained. A GitHub Action runs daily to pull the latest upstream changes and publish a new release.
+This theme is not manually maintained. A GitHub Action runs weekly to pull the latest upstream changes and publish a new release.
 
 The build script:
 
