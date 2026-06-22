@@ -22,7 +22,7 @@ jobs:
       - name: Clone MacTahoe Theme
         run: git clone --depth=1 https://github.com/vinceliuice/MacTahoe-icon-theme.git
           
-       - name: Assemble MacWaita
+      - name: Assemble MacWaita
         run: |
           mv MoreWaita MacWaita
           rm -rf MacWaita/.git
